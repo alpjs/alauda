@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;QAEgB;AAFT,IAAI,8BAAW,GAAX;;;;;EAEJ,SAAS,WAAT,CAAqB,WAArB,EAAkC;AACrC,YAHO,WAGP,WAAW,WAAX,CADqC;CAAlC","file":"index.js","sourcesContent":["export let basePath = '/';\n\nexport function setBasePath(newBasePath) {\n    basePath = newBasePath;\n}\n"]}
