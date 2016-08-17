@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":"AAAA;AACA,OAAO,IAAI,WAAW,GAAf;;AAEP,OAAO,SAAS,WAAT,CAAqB,WAArB,EAAkC;AACrC,eAAW,WAAX;AACH","file":"index.js","sourcesContent":["// eslint-disable-next-line import/no-mutable-exports\nexport let basePath = '/';\n\nexport function setBasePath(newBasePath) {\n    basePath = newBasePath;\n}\n"]}

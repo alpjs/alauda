@@ -1,33 +1,12 @@
-'use strict';
+/* global window, document */
+/* eslint no-alert: 0 */
+import { start as startHistory, redirectUrl, emit } from './history';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.on = undefined;
-
-var _history = require('./history');
-
-Object.defineProperty(exports, 'on', {
-    enumerable: true,
-    get: /**
-          * @function
-         */function get() {
-        return _history.on;
-    }
-});
-exports.ignoreLink = ignoreLink;
-exports.init = init;
-/**
- * @function
- * @param url
- * @param target
-*/function ignoreLink(url, target) {
+export function ignoreUrl(url, target) {
     return url.startsWith('#') || url.includes(':') || target && target.getAttribute('target');
 }
 
-/**
- * @function
-*/function init() {
+export function init() {
     document.addEventListener('click', function (event) {
         if (event.ctrlKey || event.metaKey) {
             return;
@@ -47,7 +26,7 @@ exports.init = init;
             }
 
             var url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
-            if (ignoreLink(url, currentTarget)) {
+            if (ignoreUrl(url, currentTarget)) {
                 return;
             }
 
@@ -59,17 +38,17 @@ exports.init = init;
                 return false;
             }
 
-            if ((0, _history.emit)('load', url) === false) {
-                throw new Error('Missing listener for load event');
+            if (emit('redirect', url) === false) {
+                throw new Error('Missing listener for redirect event');
             }
 
             return false;
         }
     }, false);
 
-    if (!(0, _history.start)()) {
+    if (!startHistory()) {
         // On older browsers, if the hash is different that the url, loads the new page according to the hash
-        (0, _history.loadUrl)();
+        redirectUrl();
         return true;
     }
 }

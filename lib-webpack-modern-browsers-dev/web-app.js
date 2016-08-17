@@ -3,7 +3,7 @@ import { basePath } from './index';
 import { navigate, on } from './history';
 import { init as initJsApp, ignoreUrl } from './js-app';
 
-let _loadCallback;
+var _loadCallback = undefined;
 
 export function init(loadCallback) {
     if (_loadCallback) {
@@ -39,5 +39,6 @@ export function load(url) {
     }
 
     navigate(url);
-    _loadCallback(`/${url}`);
+    _loadCallback(`/${ url }`);
 }
+//# sourceMappingURL=web-app.js.map

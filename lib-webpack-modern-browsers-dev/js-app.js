@@ -3,7 +3,7 @@
 import { start as startHistory, redirectUrl, emit } from './history';
 
 export function ignoreUrl(url, target) {
-    return url.startsWith('#') || url.includes(':') || (target && target.getAttribute('target'));
+    return url.startsWith('#') || url.includes(':') || target && target.getAttribute('target');
 }
 
 export function init() {
@@ -12,8 +12,8 @@ export function init() {
             return;
         }
 
-        let element = document;
-        let currentTarget = event.target;
+        var element = document;
+        var currentTarget = event.target;
 
         for (; currentTarget !== element; currentTarget = currentTarget.parentNode || element) {
             // Don't process clicks on disabled elements
@@ -25,7 +25,7 @@ export function init() {
                 continue;
             }
 
-            let url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
+            var url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
             if (ignoreUrl(url, currentTarget)) {
                 return;
             }
@@ -33,7 +33,7 @@ export function init() {
             event.preventDefault();
             event.stopPropagation();
 
-            let confirmMessage = currentTarget.getAttribute('data-confirm-message');
+            var confirmMessage = currentTarget.getAttribute('data-confirm-message');
             if (confirmMessage && !window.confirm(confirmMessage)) {
                 return false;
             }
@@ -52,3 +52,4 @@ export function init() {
         return true;
     }
 }
+//# sourceMappingURL=js-app.js.map
