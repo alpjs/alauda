@@ -52,7 +52,7 @@
     "watch:dev": "pob-watch"
   },
   "dependencies": {
-    "nightingale-logger": "^1.2.0"
+    "nightingale-logger": "^1.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
@@ -71,6 +71,7 @@
     "jaguarjs-jsdoc": "github:christophehurpeau/jaguarjs-jsdoc#0e577602ac327a694d4f619cb37c1476c523261e",
     "jsdoc": "^3.4.0",
     "pob-babel": "^7.1.2",
-    "pob-release": "^2.1.0"
+    "pob-release": "^2.1.0",
+    "tcomb-forked": "^3.4.0"
   }
 }
