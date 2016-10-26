@@ -2,6 +2,6 @@
 export var basePath = '/';
 
 export function setBasePath(newBasePath) {
-    basePath = newBasePath;
+  basePath = newBasePath;
 }
 //# sourceMappingURL=index.js.map

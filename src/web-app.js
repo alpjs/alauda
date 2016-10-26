@@ -6,38 +6,38 @@ import { init as initJsApp, ignoreUrl } from './js-app';
 let _loadCallback;
 
 export function init(loadCallback) {
-    if (_loadCallback) {
-        throw new Error('already init');
-    }
+  if (_loadCallback) {
+    throw new Error('already init');
+  }
 
-    _loadCallback = loadCallback;
+  _loadCallback = loadCallback;
 
-    initJsApp();
+  initJsApp();
 
-    on('redirect', redirect);
+  on('redirect', redirect);
 }
 
 export function redirect(url) {
-    if (!url) {
-        return;
-    }
+  if (!url) {
+    return;
+  }
 
-    if (ignoreUrl(url)) {
-        location.href = url;
-    } else {
-        load(url);
-    }
+  if (ignoreUrl(url)) {
+    location.href = url;
+  } else {
+    load(url);
+  }
 }
 
 export function load(url) {
-    if (url.startsWith('?')) {
-        url = location.pathname + url;
-    }
+  if (url.startsWith('?')) {
+    url = location.pathname + url;
+  }
 
-    if (url.startsWith(basePath)) {
-        url = url.substr(basePath.length);
-    }
+  if (url.startsWith(basePath)) {
+    url = url.substr(basePath.length);
+  }
 
-    navigate(url);
-    _loadCallback(`/${url}`);
+  navigate(url);
+  _loadCallback(`/${url}`);
 }
