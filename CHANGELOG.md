@@ -1,3 +1,7 @@
+### v2.3.0
+
+- [`32aa288`](https://github.com/alpjs/alauda/commit/32aa288190d4e204dd280ce97b5b753c6c4914e6) refactor: pob update and update dependencies (Christophe Hurpeau)
+
 ### v2.2.0
 
 - [`4c63507`](https://github.com/alpjs/alauda/commit/4c635075134d0d540f766cea1c3f4ee0e7fc17c8) chore(package): pob-release@^2.2.2 (Christophe Hurpeau)
