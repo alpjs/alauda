@@ -7,7 +7,7 @@ export function ignoreUrl(url, target) {
 }
 
 export function init() {
-  document.addEventListener('click', event => {
+  document.addEventListener('click', function (event) {
     if (event.ctrlKey || event.metaKey) {
       return;
     }

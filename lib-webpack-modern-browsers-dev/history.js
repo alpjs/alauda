@@ -8,14 +8,14 @@ export function on(event, listener) {
   return eventEmitter.on(event, listener);
 }
 
-export function emit() {
-  return eventEmitter.emit(...arguments);
+export function emit(...args) {
+  return eventEmitter.emit(...args);
 }
 
 var started = false;
 
 // Cached regex for stripping a leading hash/slash and trailing space.
-var routeStripper = /^[#\/]|\s+$/g;
+var routeStripper = /^[#/]|\s+$/g;
 
 var _hasPushState = Boolean(window.history && history.pushState);
 var usePushState = void 0;
@@ -65,7 +65,7 @@ export function start(forceUseHash) {
       return _cleanFragment(fragment);
     };
 
-    _updateBrowserHistory = (fragment, replace) => {
+    _updateBrowserHistory = function _updateBrowserHistory(fragment, replace) {
       history[replace ? 'replaceState' : 'pushState']({}, document.title, `${ location.protocol }//${ location.host }${ basePath }${ fragment }`);
     };
   } else {
@@ -74,7 +74,7 @@ export function start(forceUseHash) {
       return _cleanFragment(fragment);
     };
 
-    _updateBrowserHistory = (fragment, replace) => {
+    _updateBrowserHistory = function _updateBrowserHistory(fragment, replace) {
       _updateHash(location, fragment, replace);
     };
   }

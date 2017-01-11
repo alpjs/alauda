@@ -2,8 +2,8 @@
 
 tools for webapps
 
+[![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
-
 
 ## Install
 
@@ -49,9 +49,9 @@ init((url) => {
 redirect('/'); // manually ask for a redirect of url
 ```
 
-
-
 [npm-image]: https://img.shields.io/npm/v/alauda.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/alauda
-[daviddm-image]: https://david-dm.org//alauda.svg?style=flat-square
-[daviddm-url]: https://david-dm.org//alauda
+[daviddm-image]: https://david-dm.org/alpjs/alauda.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/alpjs/alauda
+[dependencyci-image]: https://dependencyci.com/github/alpjs/alauda/badge?style=flat-square
+[dependencyci-url]: https://dependencyci.com/github/alpjs/alauda

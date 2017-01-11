@@ -15,7 +15,7 @@ export function emit() {
 var started = false;
 
 // Cached regex for stripping a leading hash/slash and trailing space.
-var routeStripper = /^[#\/]|\s+$/g;
+var routeStripper = /^[#/]|\s+$/g;
 
 var _hasPushState = Boolean(window.history && history.pushState);
 var usePushState = void 0;
