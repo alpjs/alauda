@@ -1,3 +1,9 @@
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/alpjs/alauda/compare/v2.3.0...v2.4.0) (2017-01-11)
+
+upgrade dependencies and lint
+
+
 ### v2.3.0
 
 - [`32aa288`](https://github.com/alpjs/alauda/commit/32aa288190d4e204dd280ce97b5b753c6c4914e6) refactor: pob update and update dependencies (Christophe Hurpeau)
