@@ -1,3 +1,12 @@
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/alpjs/alauda/compare/v2.4.0...v2.5.0) (2017-03-05)
+
+
+### Features
+
+* pob upgrade ([131113d](https://github.com/alpjs/alauda/commit/131113d))
+
+
 <a name="2.4.0"></a>
 # [2.4.0](https://github.com/alpjs/alauda/compare/v2.3.0...v2.4.0) (2017-01-11)
 
