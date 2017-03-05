@@ -4,7 +4,9 @@
     "webpack"
   ],
   "react": false,
-  "documentation": false,
+  "documentation": true,
   "testing": false,
-  "doclets": false
+  "doclets": false,
+  "entries": [],
+  "flow": false
 }

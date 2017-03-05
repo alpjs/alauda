@@ -2,7 +2,7 @@
 import EventEmitter from 'events';
 import { basePath } from './index';
 
-var eventEmitter = new EventEmitter();
+let eventEmitter = new EventEmitter();
 
 export function on(event, listener) {
   return eventEmitter.on(event, listener);
@@ -12,41 +12,41 @@ export function emit(...args) {
   return eventEmitter.emit(...args);
 }
 
-var started = false;
+let started = false;
 
 // Cached regex for stripping a leading hash/slash and trailing space.
-var routeStripper = /^[#/]|\s+$/g;
+let routeStripper = /^[#/]|\s+$/g;
 
-var _hasPushState = Boolean(window.history && history.pushState);
-var usePushState = void 0;
+let _hasPushState = Boolean(window.history && history.pushState);
+let usePushState;
 
-var _getHash = function _getHash(windowOverride) {
-  var match = (windowOverride || window).location.href.match(/#\/(.*)$/);
+const _getHash = function _getHash(windowOverride) {
+  let match = (windowOverride || window).location.href.match(/#\/(.*)$/);
   return match ? match[1] : '';
 };
 
-var _cleanFragment = function _cleanFragment(fragment) {
+const _cleanFragment = function _cleanFragment(fragment) {
   fragment = fragment.replace(routeStripper, '');
-  if (`/${ fragment }/`.startsWith(basePath)) {
+  if (`/${fragment}/`.startsWith(basePath)) {
     fragment = fragment.substr(basePath.replace(routeStripper, '').length);
   }
   return fragment;
 };
 
-var _updateHash = function _updateHash(location, fragment, replace) {
+const _updateHash = function _updateHash(location, fragment, replace) {
   if (replace) {
-    location.replace(`${ location.toString().replace(/(javascript:|#).*$/, '') }#/${ fragment }`);
+    location.replace(`${location.toString().replace(/(javascript:|#).*$/, '')}#/${fragment}`);
   } else {
-    location.hash = `/${ fragment }`;
+    location.hash = `/${fragment}`;
   }
 };
 
-var _checkUrlInterval = void 0; // eslint-disable-line no-unused-vars
-var _currentFragment = void 0;
-var _updateBrowserHistory = void 0;
+let _checkUrlInterval; // eslint-disable-line no-unused-vars
+let _currentFragment;
+let _updateBrowserHistory;
 
 // eslint-disable-next-line import/no-mutable-exports
-export var getFragment = void 0;
+export let getFragment;
 
 export function start(forceUseHash) {
   if (started) {
@@ -57,8 +57,8 @@ export function start(forceUseHash) {
 
   if (usePushState) {
     getFragment = function getFragment() {
-      var fragment = location.pathname;
-      var search = location.search;
+      let fragment = location.pathname;
+      let search = location.search;
       if (search) {
         fragment += search;
       }
@@ -66,11 +66,11 @@ export function start(forceUseHash) {
     };
 
     _updateBrowserHistory = function _updateBrowserHistory(fragment, replace) {
-      history[replace ? 'replaceState' : 'pushState']({}, document.title, `${ location.protocol }//${ location.host }${ basePath }${ fragment }`);
+      history[replace ? 'replaceState' : 'pushState']({}, document.title, `${location.protocol}//${location.host}${basePath}${fragment}`);
     };
   } else {
     getFragment = function getFragment() {
-      var fragment = _getHash();
+      let fragment = _getHash();
       return _cleanFragment(fragment);
     };
 
@@ -79,7 +79,7 @@ export function start(forceUseHash) {
     };
   }
 
-  var fragment = getFragment();
+  let fragment = getFragment();
 
   // Depending on whether we're using pushState or hashes, and whether
   // 'onhashchange' is supported, determine how we check the URL state.
@@ -94,14 +94,14 @@ export function start(forceUseHash) {
   // Determine if we need to change the base url, for a pushState link
   // opened by a non-pushState browser.
   _currentFragment = fragment;
-  var loc = location;
+  let loc = location;
 
   // If we've started out with a hash-based route, but we're currently
   // in a browser where it could be `pushState`-based instead...
   if (usePushState && loc.hash && loc.pathname === '/') {
     _currentFragment = _getHash().replace(routeStripper, '');
     loc.hash = '';
-    history.replaceState({ fragment: _currentFragment }, document.title, `${ loc.protocol }//${ loc.host }${ basePath }${ _currentFragment }`);
+    history.replaceState({ fragment: _currentFragment }, document.title, `${loc.protocol}//${loc.host}${basePath}${_currentFragment}`);
     return false;
   }
   return usePushState || fragment === '';
@@ -109,7 +109,7 @@ export function start(forceUseHash) {
 
 // Checks the current URL to see if it has changed, and if it has, calls `redirectUrl`
 export function checkUrl() {
-  var current = getFragment();
+  let current = getFragment();
   if (current === _currentFragment) {
     return false;
   }
@@ -120,9 +120,9 @@ export function checkUrl() {
 // Attempt to load the current URL fragment.
 export function redirectUrl() {
   _currentFragment = getFragment();
-  var fragment = basePath + _currentFragment;
+  let fragment = basePath + _currentFragment;
   if (fragment) {
-    var a = document.querySelector(`a[href="${ fragment }"]`);
+    let a = document.querySelector(`a[href="${fragment}"]`);
     if (a) {
       a.click();
     } else if (eventEmitter.emit('redirect', fragment) === false) {

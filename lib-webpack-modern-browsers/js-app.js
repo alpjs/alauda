@@ -12,8 +12,8 @@ export function init() {
       return;
     }
 
-    var element = document;
-    var currentTarget = event.target;
+    let element = document;
+    let currentTarget = event.target;
 
     for (; currentTarget !== element; currentTarget = currentTarget.parentNode || element) {
       // Don't process clicks on disabled elements
@@ -25,7 +25,7 @@ export function init() {
         continue;
       }
 
-      var url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
+      let url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
       if (ignoreUrl(url, currentTarget)) {
         return;
       }
@@ -33,7 +33,7 @@ export function init() {
       event.preventDefault();
       event.stopPropagation();
 
-      var confirmMessage = currentTarget.getAttribute('data-confirm-message');
+      let confirmMessage = currentTarget.getAttribute('data-confirm-message');
       if (confirmMessage && !window.confirm(confirmMessage)) {
         return false;
       }
