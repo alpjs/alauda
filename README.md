@@ -1,5 +1,7 @@
 # alauda [![NPM version][npm-image]][npm-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/alpjs/alauda.svg)](https://greenkeeper.io/)
+
 tools for webapps
 
 [![Dependency ci Status][dependencyci-image]][dependencyci-url]
