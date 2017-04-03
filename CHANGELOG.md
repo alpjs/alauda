@@ -1,3 +1,7 @@
+<a name="2.6.0"></a>
+# [2.6.0](https://github.com/alpjs/alauda/compare/v2.5.0...v2.6.0) (2017-04-03)
+
+
 <a name="2.5.0"></a>
 # [2.5.0](https://github.com/alpjs/alauda/compare/v2.4.0...v2.5.0) (2017-03-05)
 
