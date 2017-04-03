@@ -14,10 +14,30 @@
     "url": "https://github.com/alpjs/alauda/issues"
   },
   "main": "./index.js",
-  "webpack:main": "./lib-webpack/index.js",
-  "webpack:main-dev": "./lib-webpack-dev/index.js",
-  "webpack:main-modern-browsers": "./lib-webpack-modern-browsers/index.js",
-  "webpack:main-modern-browsers-dev": "./lib-webpack-modern-browsers-dev/index.js",
+  "module": "./lib-module/index.js",
+  "module-dev": "./lib-module-dev/index.js",
+  "module:modern-browsers": "./lib-module-modern-browsers/index.js",
+  "module:modern-browsers-dev": "./lib-module-modern-browsers-dev/index.js",
+  "module:aliases-browser": {
+    "./history.js": "./lib-module/history.js",
+    "./js-app.js": "./lib-module/js-app.js",
+    "./web-app.js": "./lib-module/web-app.js"
+  },
+  "module:aliases-browser-dev": {
+    "./history.js": "./lib-module-dev/history.js",
+    "./js-app.js": "./lib-module-dev/js-app.js",
+    "./web-app.js": "./lib-module-dev/web-app.js"
+  },
+  "module:aliases-modern-browsers": {
+    "./history.js": "./lib-module-modern-browsers/history.js",
+    "./js-app.js": "./lib-module-modern-browsers/js-app.js",
+    "./web-app.js": "./lib-module-modern-browsers/web-app.js"
+  },
+  "module:aliases-modern-browsers-dev": {
+    "./history.js": "./lib-module-modern-browsers-dev/history.js",
+    "./js-app.js": "./lib-module-modern-browsers-dev/js-app.js",
+    "./web-app.js": "./lib-module-modern-browsers-dev/web-app.js"
+  },
   "scripts": {
     "build": "pob-build",
     "clean": "rm -Rf docs dist test/node6 coverage",
@@ -32,45 +52,25 @@
     "watch": "pob-watch"
   },
   "dependencies": {
-    "flow-runtime": "^0.7.0",
-    "nightingale-logger": "^3.2.0"
+    "flow-runtime": "^0.10.0",
+    "nightingale-logger": "^3.4.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.0",
+    "babel-eslint": "^7.2.1",
     "babel-plugin-add-jsdoc-annotations": "^5.1.0",
+    "babel-preset-env": "^1.3.2",
     "babel-preset-jsdoc": "^0.4.0",
-    "babel-preset-latest": "^6.22.0",
-    "babel-preset-modern-browsers": "^8.1.1",
-    "eslint": "^3.17.0",
-    "eslint-config-airbnb-base": "^11.1.1",
+    "babel-preset-modern-browsers": "^9.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.2",
     "eslint-config-pob": "^11.1.0",
-    "eslint-plugin-babel": "^4.1.0",
+    "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.2.0",
     "jsdoc": "^3.4.2",
     "komet": "^0.1.4",
     "komet-karma": "^0.2.5",
     "minami": "^1.1.1",
-    "pob-babel": "^16.2.3",
+    "pob-babel": "^17.2.0",
     "pob-release": "^3.1.0"
-  },
-  "webpack:aliases": {
-    "./history.js": "./lib-webpack/history.js",
-    "./js-app.js": "./lib-webpack/js-app.js",
-    "./web-app.js": "./lib-webpack/web-app.js"
-  },
-  "webpack:aliases-dev": {
-    "./history.js": "./lib-webpack-dev/history.js",
-    "./js-app.js": "./lib-webpack-dev/js-app.js",
-    "./web-app.js": "./lib-webpack-dev/web-app.js"
-  },
-  "webpack:aliases-modern-browsers": {
-    "./history.js": "./lib-webpack-modern-browsers/history.js",
-    "./js-app.js": "./lib-webpack-modern-browsers/js-app.js",
-    "./web-app.js": "./lib-webpack-modern-browsers/web-app.js"
-  },
-  "webpack:aliases-modern-browsers-dev": {
-    "./history.js": "./lib-webpack-modern-browsers-dev/history.js",
-    "./js-app.js": "./lib-webpack-modern-browsers-dev/js-app.js",
-    "./web-app.js": "./lib-webpack-modern-browsers-dev/web-app.js"
   }
 }
