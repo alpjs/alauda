@@ -1,3 +1,12 @@
+<a name="2.7.0"></a>
+# [2.7.0](https://github.com/alpjs/alauda/compare/v2.6.0...v2.7.0) (2017-08-16)
+
+
+### Features
+
+* update dependencies ([2c3be80](https://github.com/alpjs/alauda/commit/2c3be80))
+
+
 <a name="2.6.0"></a>
 # [2.6.0](https://github.com/alpjs/alauda/compare/v2.5.0...v2.6.0) (2017-04-03)
 
