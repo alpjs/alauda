@@ -1,0 +1,15 @@
+{
+  "pob": {
+    "pob-config": {
+      "envs": [
+        "module-modern-browsers",
+        "module"
+      ],
+      "documentation": {
+        "doclets": false
+      },
+      "testing": false,
+      "entries": []
+    }
+  }
+}

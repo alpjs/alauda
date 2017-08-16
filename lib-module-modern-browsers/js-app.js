@@ -7,50 +7,33 @@ export function ignoreUrl(url, target) {
 }
 
 export function init() {
-  document.addEventListener('click', function (event) {
-    if (event.ctrlKey || event.metaKey) {
-      return;
-    }
 
-    let element = document;
-    let currentTarget = event.target;
+  if (document.addEventListener('click', function (event) {
+    if (!(event.ctrlKey || event.metaKey)) {
 
-    for (; currentTarget !== element; currentTarget = currentTarget.parentNode || element) {
-      // Don't process clicks on disabled elements
-      if (currentTarget.disabled === true) {
-        continue;
+        let element = document;
+
+
+        for (let currentTarget = event.target; currentTarget !== element; currentTarget = currentTarget.parentNode || element) {
+          // Don't process clicks on disabled elements
+          if (currentTarget.disabled === true) continue;
+
+          if (!currentTarget.matches('a[href],[data-href]')) continue;
+
+          let url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
+          if (ignoreUrl(url, currentTarget)) return;
+
+          event.preventDefault(), event.stopPropagation();
+
+
+          let confirmMessage = currentTarget.getAttribute('data-confirm-message');
+          if (confirmMessage && !window.confirm(confirmMessage)) return false;
+
+          if (emit('redirect', url) === false) throw new Error('Missing listener for redirect event');
+
+          return false;
+        }
       }
-
-      if (!currentTarget.matches('a[href],[data-href]')) {
-        continue;
-      }
-
-      let url = currentTarget.getAttribute('href') || currentTarget.getAttribute('data-href');
-      if (ignoreUrl(url, currentTarget)) {
-        return;
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      let confirmMessage = currentTarget.getAttribute('data-confirm-message');
-      if (confirmMessage && !window.confirm(confirmMessage)) {
-        return false;
-      }
-
-      if (emit('redirect', url) === false) {
-        throw new Error('Missing listener for redirect event');
-      }
-
-      return false;
-    }
-  }, false);
-
-  if (!startHistory()) {
-    // On older browsers, if the hash is different that the url,
-    // loads the new page according to the hash
-    redirectUrl();
-    return true;
-  }
+  }, false), !startHistory()) return redirectUrl(), true;
 }
 //# sourceMappingURL=js-app.js.map

@@ -1,0 +1,6 @@
+{
+  "extends": "pob/babel",
+  "rules": {
+    "no-use-before-define": "off"
+  }
+}

@@ -6,39 +6,16 @@ import { init as initJsApp, ignoreUrl } from './js-app';
 let _loadCallback;
 
 export function init(loadCallback) {
-  if (_loadCallback) {
-    throw new Error('already init');
-  }
+  if (_loadCallback) throw new Error('already init');
 
-  _loadCallback = loadCallback;
-
-  initJsApp();
-
-  on('redirect', redirect);
+  _loadCallback = loadCallback, initJsApp(), on('redirect', redirect);
 }
 
 export function redirect(url) {
-  if (!url) {
-    return;
-  }
-
-  if (ignoreUrl(url)) {
-    location.href = url;
-  } else {
-    load(url);
-  }
+  url && (ignoreUrl(url) ? location.href = url : load(url));
 }
 
 export function load(url) {
-  if (url.startsWith('?')) {
-    url = location.pathname + url;
-  }
-
-  if (url.startsWith(basePath)) {
-    url = url.substr(basePath.length);
-  }
-
-  navigate(url);
-  _loadCallback(`/${url}`);
+  url.startsWith('?') && (url = location.pathname + url), url.startsWith(basePath) && (url = url.substr(basePath.length)), navigate(url), _loadCallback(`/${url}`);
 }
 //# sourceMappingURL=web-app.js.map
